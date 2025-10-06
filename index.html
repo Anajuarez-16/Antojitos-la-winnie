@@ -97,25 +97,28 @@
 <body>
 
   <header>
-    <h1> Menú de snacks la Winnie </h1>
+    <h1>Menú de snacks la Winnie</h1>
   </header>
 
   <section class="menu">
-    <div class="card" onclick="ordenar('Manzana loca', 60)">
+    <!-- MANZANA LOCA -->
+    <div class="card" onclick="ordenar('Manzana loca', 50)">
       <img src="Imag/Manzana-loca.webp" alt="Manzana-loca">
       <h2>Manzana loca</h2>
       <p>Manzana en rebanadas cubierta con pulpa de tamarindo acompañada con gomitas bañadas en chamoy 💛</p>
       <p><strong>$50 MXN</strong></p>
     </div>
     
-    <div class="card" onclick="ordenar('Pepino loco', 35)">
+    <!-- PEPINO LOCO -->
+    <div class="card" onclick="ordenar('Pepino loco', 50)">
       <img src="Imag/Pepino-loco.jpg" alt="Pepino-loco">
       <h2>Pepino loco</h2>
       <p>Pepino fresco con chamoy, cacahuates, salsas y gomitas.</p>
       <p><strong>$50 MXN</strong></p>
     </div>
 
-    <div class="card" onclick="ordenar('Tacos de fruta', 50)">
+    <!-- TACOS DE FRUTA -->
+    <div class="card" onclick="ordenar('Tacos de fruta', 60)">
       <img src="Imag/Tacos-de-fruta.jpg" alt="Tacos-de-fruta">
       <h2>Tacos de fruta</h2>
       <p>Tortillitas rellenas de frutas frescas con chamoy y salsita dulce.</p>
@@ -124,7 +127,7 @@
   </section>
 
   <footer>
-   <p>📍 San Luis Potosí | 📞 444-578-6318 | Entrego en el Tecnologico de San Luis Potosí  en un horario de 7am a 3pm</p>
+    <p>📍 San Luis Potosí | 📞 444-578-6318 | Entrego en el Tecnológico de San Luis Potosí en un horario de 7am a 3pm</p>
     <div class="whatsapp">
       <a href="https://wa.me/5214445786318" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -134,13 +137,16 @@
 
   <script>
     function ordenar(producto, precio) {
-      let cantidad = prompt(`¿Cuántos ${producto} deseas ordenar?`);
+      let cantidad = prompt(`¿Cuántos ${producto}(s) deseas ordenar?`);
       if (cantidad && !isNaN(cantidad) && cantidad > 0) {
         let total = precio * cantidad;
-        let mensaje = `Hola, quiero ordenar ${cantidad} ${producto}(s). Total: $${total} MXN.`;
-        let telefono = "5214445786318"; // tu número de WhatsApp con LADA
-        let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, "_blank");
+        let confirmar = confirm(`Has pedido ${cantidad} ${producto}(s).\nTotal: $${total} MXN\n\n¿Deseas continuar con tu pedido por WhatsApp?`);
+        if (confirmar) {
+          let mensaje = `Hola, quiero ordenar ${cantidad} ${producto}(s). Total: $${total} MXN.`;
+          let telefono = "5214445786318"; // tu número de WhatsApp con LADA
+          let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+          window.open(url, "_blank");
+        }
       } else {
         alert("Por favor ingresa una cantidad válida.");
       }
@@ -149,6 +155,8 @@
 
 </body>
 </html>
+
+
 
 
 
